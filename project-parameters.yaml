@@ -1,0 +1,397 @@
+# Project Parameters Configuration Template
+# This file centralizes all common parameters used across Linear issues
+# Update these values once, and all issues will reference them
+
+# ============================================
+# CORE PROJECT PARAMETERS
+# ============================================
+
+PROJECT_NAME: "Number-Guessing-Game"
+PROJECT_TYPE: "Unity2D"  # Unity2D, Unity3D, Godot, etc.
+BASE_DIRECTORY: "/Users/diarmuidcurran/Unity Projects/Number-Guessing-Game/ProjectPlanning/"
+ROOT_DIRECTORY: "/Users/diarmuidcurran/Documents/AIDev/"
+
+# ============================================
+# COMPLEXITY CONFIGURATION & VALIDATION RULES
+# ============================================
+# 
+# ⚠️  IMPORTANT: Commands validate these constraints!
+#
+# SIMPLE projects MUST have:
+#   - COMPLEXITY_LEVEL: "simple"
+#   - phases: 1 (Technical MVP only)
+#   - PHASES: ["Technical MVP"] 
+#   - TDS sections: 0-3 only
+#   - Epic count: 2-3 total
+#   - Focus: Learning and concept validation
+#
+# INTERMEDIATE projects MUST have:
+#   - COMPLEXITY_LEVEL: "intermediate"
+#   - phases: 3 
+#   - PHASES: ["Technical MVP", "Vertical Slice", "Beta"]
+#   - TDS sections: 0-5
+#   - Epic count: 3-5 total
+#   - Focus: Playable game development
+#
+# DETAILED projects MUST have:
+#   - COMPLEXITY_LEVEL: "detailed"
+#   - phases: 4
+#   - PHASES: ["Technical MVP", "Vertical Slice", "Beta", "Release"]
+#   - TDS sections: 0-7
+#   - Epic count: 5-8 total
+#   - Focus: Commercial quality development
+#
+# ============================================
+
+# Project complexity level affects scope and detail across all phases
+COMPLEXITY_LEVEL: "simple"  # ⚠️ MUST match phase configuration below
+
+SCOPE_CONFIG:
+  # ⚠️ These values MUST match COMPLEXITY_LEVEL above
+  PHASE_COUNT: 1                   # ⚠️ MUST be 1 for simple complexity
+  EPIC_COUNT: 3                    # simple: 2-3, intermediate: 3-5, detailed: 5-8
+  FEATURES_PER_EPIC: 3             # simple: 2-3, intermediate: 3-4, detailed: 4-6
+  TASKS_PER_FEATURE: 3             # simple: 3-5, intermediate: 4-7, detailed: 6-10
+  DOCUMENTATION_DEPTH: "simple"    # affects detail level in all docs
+  PHASES: ["Technical MVP"]        # ⚠️ MUST match PHASE_COUNT above
+  VALIDATION_LEVEL: "simple"       # affects testing requirements
+  
+# Complexity-specific scaling factors
+COMPLEXITY_SCALING:
+  simple:
+    phases: 1                     # Technical MVP only
+    epic_multiplier: 0.6          # fewer epics (2-3 total)
+    feature_multiplier: 0.7       # fewer features per epic
+    task_multiplier: 0.8          # fewer tasks per feature
+    detail_level: "minimal"       # less documentation detail
+  intermediate:
+    phases: 3                     # MVP + Vertical Slice + Beta
+    epic_multiplier: 1.0          # standard counts
+    feature_multiplier: 1.0       # standard features
+    task_multiplier: 1.0          # standard tasks
+    detail_level: "standard"      # balanced documentation
+  detailed:
+    phases: 4                     # Full 4-phase development
+    epic_multiplier: 1.4          # more epics
+    feature_multiplier: 1.3       # more features per epic  
+    task_multiplier: 1.2          # more tasks per feature
+    detail_level: "comprehensive" # extensive documentation
+
+# ============================================
+# GAME CONCEPT
+# ============================================
+# Paste your game idea between the START and END markers below.
+# You can use full markdown formatting including:
+# - Headers (##, ###)
+# - Lists (-, *, 1.)
+# - **Bold** and *italic* text
+# - Code blocks with ```
+# - Tables, links, etc.
+#
+# === GAME IDEA START ===
+
+GAME_IDEA: |
+  ## Game Concept: Number Guessing Challenge
+
+  **Core Mechanic:** The computer selects a random number between 1-100. The player enters guesses and receives "too high," "too low," or "correct" feedback. The goal is to guess the number in as few attempts as possible.
+
+  **Victory Condition:** Guess the correct number within 10 attempts.
+
+  **Gameplay Loop:**
+  1. Game generates random number (1-100)
+  2. Player enters guess and clicks submit
+  3. Game provides feedback ("Higher," "Lower," or "Correct!")
+  4. If correct: Show victory screen with attempt count
+  5. If 10+ attempts: Show game over screen
+  6. Player can restart for new game
+
+  **UI Requirements:**
+  - Input field for number entry
+  - Submit button
+  - Feedback text display
+  - Attempt counter
+  - Best score display (fewest attempts)
+  - Start/Restart button
+
+  **Technical Requirements:**
+  - Random number generation
+  - Input validation (1-100 range)
+  - Attempt tracking
+  - Local best score storage
+  - Simple state management (Playing, Won, Lost)
+
+  **Success Metrics:**
+  - Game correctly validates input range
+  - Feedback is accurate for all guess scenarios
+  - Attempt counting works properly
+  - Best score persists between games
+  - UI is responsive and clear
+
+# === GAME IDEA END ===
+
+# ============================================
+# CURRENT WORKING CONTEXT
+# ============================================
+
+# Current Epic being worked on
+TARGET_EPIC: ""
+TARGET_EPIC_NUMBER: ""
+TARGET_EPIC_NAME: ""
+
+# Current Feature being worked on
+TARGET_FEATURE: ""
+TARGET_FEATURE_NUMBER: ""
+TARGET_FEATURE_NAME: ""
+
+# Current Task Document
+FEATURE_TASKS_DOCUMENT: ""
+
+# ============================================
+# PROJECT PATHS (Auto-generated from BASE_DIRECTORY and PROJECT_NAME)
+# ============================================
+
+# Documentation Paths
+GDD_PATH: "{BASE_DIRECTORY}/{PROJECT_NAME}/docs/{PROJECT_NAME}-GDD.md"
+TDS_PATH: "{BASE_DIRECTORY}/{PROJECT_NAME}/docs/TDS/"
+ROADMAP_PATH: "{BASE_DIRECTORY}/{PROJECT_NAME}/docs/{PROJECT_NAME}-Development-Roadmap.md"
+EPIC_PATH: "{BASE_DIRECTORY}/{PROJECT_NAME}/docs/{PROJECT_NAME}-Epic-{TARGET_EPIC_NUMBER}-{TARGET_EPIC_NAME}.md"
+FEATURE_PATH: "{BASE_DIRECTORY}/{PROJECT_NAME}/docs/{FEATURE_TASKS_DOCUMENT}"
+
+# Prompt Template Paths
+PROMPTS_PATH: "{ROOT_DIRECTORY}/{PROJECT_NAME}/prompts/"
+TDS_TEMPLATES_PATH: "{ROOT_DIRECTORY}/{PROJECT_NAME}/prompts/TDS-Templates/"
+TASK_TEMPLATES_PATH: "{ROOT_DIRECTORY}/{PROJECT_NAME}/prompts/Task-Templates/"
+
+# Output Paths
+OUTPUTS_PATH: "{BASE_DIRECTORY}/{PROJECT_NAME}/outputs/"
+CODE_OUTPUT_PATH: "{BASE_DIRECTORY}/{PROJECT_NAME}/outputs/code/"
+DOCS_OUTPUT_PATH: "{BASE_DIRECTORY}/{PROJECT_NAME}/outputs/docs/"
+
+# ============================================
+# LINEAR CONFIGURATION
+# ============================================
+
+LINEAR_TEAM: "AIGameDev"
+LINEAR_PROJECT: "Number-Guessing-Game"
+LINEAR_LABELS: []
+
+# ============================================
+# UNITY SPECIFIC CONFIGURATION
+# ============================================
+
+UNITY_VERSION: "6000"
+UNITY_PROJECT_PATH: "/Users/diarmuidcurran/Unity Projects/[PROJECT_NAME]"
+UNITY_SCRIPTS_PATH: "Assets/Scripts/"
+UNITY_EDITOR_PATH: "Assets/Editor/"
+
+# ============================================
+# HYBRID TEMPLATE PATHS
+# ============================================
+
+# Template Sources (AIDev - Read Only)
+AIDEV_BASE_PATH: "/Users/diarmuidcurran/Documents/AIDev"
+TDS_TEMPLATES_PATH: "/Users/diarmuidcurran/Documents/AIDev/Base Prompts/Techn Design Spec"
+TDS_COMPLEXITY_MAPPING_PATH: "/Users/diarmuidcurran/Documents/AIDev/Base Prompts/Techn Design Spec/TDS-Complexity-Mapping.md"
+GDD_TEMPLATE_PATH: "/Users/diarmuidcurran/Documents/AIDev/Base Prompts/GDD"
+
+# Project Template Copies (Project-Specific - Copied from AIDev)
+PROJECT_TDS_TEMPLATES_PATH: "/Users/diarmuidcurran/Unity Projects/{PROJECT_NAME}/templates/TDS"
+PROJECT_GDD_TEMPLATE_PATH: "/Users/diarmuidcurran/Unity Projects/{PROJECT_NAME}/templates/GDD"
+PROJECT_PROMPTS_TEMPLATES_PATH: "/Users/diarmuidcurran/Unity Projects/{PROJECT_NAME}/templates/Prompts"
+
+# ============================================
+# DEVELOPMENT ORDERING & DEPENDENCY MANAGEMENT
+# ============================================
+
+# MVP-focused development constraints (prevents feature creep)
+DEVELOPMENT_CONSTRAINTS:
+  # Current development phase controls what features can be generated
+  CURRENT_PHASE: "foundation"        # foundation, interaction, enhancement, polish
+  MVP_MODE: true                     # Enforces MVP-first development priorities
+  PRIORITY_CEILING: 3                # Don't generate features above this priority level (0-9)
+  
+  # Statistical analysis and debugging focus (MVP technical implementation)
+  TECHNICAL_FOCUS:
+    statistical_analysis_priority: true     # Prioritize debugging and QA systems
+    debugging_infrastructure_first: true    # Debug systems before polish features  
+    basic_interaction_before_polish: true   # Core gameplay before VFX/SFX
+    testing_infrastructure_priority: true   # Unit/integration testing early
+  
+  # Blocked feature categories until MVP foundation complete
+  MVP_BLOCKED_FEATURES:
+    - "Complex animations and visual effects"
+    - "Particle systems and shaders" 
+    - "Advanced audio systems and music"
+    - "Complex UI transitions and animations"
+    - "Advanced performance optimizations"
+    - "Platform-specific features"
+    - "Analytics and telemetry systems"
+    
+  # Required foundation systems before advanced features
+  MVP_REQUIRED_FOUNDATIONS:
+    - "Core game logic and mechanics complete"
+    - "Basic debugging and logging infrastructure"
+    - "Statistical validation systems operational"
+    - "Unit testing framework established"
+    - "Basic user input and interaction working"
+
+# Unity taxonomy priority mapping for feature ordering
+TAXONOMY_PRIORITIES:
+  # Level 0-1: Foundation Systems (Must implement first)
+  "1.1 Core Logic & Mechanics": 0
+  "1.4 Component Architecture": 0  
+  "7.3 Debug Systems": 1
+  "1.2 Event Systems": 1
+  "1.3 State Management": 1
+  "7.1 Unit Testing": 1
+  
+  # Level 2-3: Basic Interaction (Core MVP)
+  "2.2 Input Handling": 2
+  "6.1 Data Management": 2
+  "6.2 Serialization": 2
+  "2.1 UI Layout & Navigation": 3
+  "7.2 Integration Testing": 3
+  "4.2 Collision Detection": 3
+  
+  # Level 4-5: User Experience (Post-MVP Foundation)
+  "2.3 HUD & Feedback": 4
+  "2.4 Menus & Dialogs": 4
+  "5.1 AI Behaviors": 4
+  "8.1 Build Pipeline": 4
+  "4.1 Physics Integration": 5
+  "5.2 Decision Systems": 5
+  
+  # Level 6-7: Enhancement & Polish (After Core Complete)
+  "3.1 Rendering & Shaders": 6
+  "3.2 Animation Systems": 6
+  "6.3 Performance Systems": 6
+  "4.4 Advanced Physics": 6
+  "8.2 Platform Integration": 6
+  "6.4 Caching & Optimization": 7
+  "7.4 Profiling & Analytics": 7
+  
+  # Level 8-9: Advanced Features (Future Iterations)
+  "3.3 Particle Effects": 8
+  "3.4 Lighting & Post-Processing": 8
+  "5.3 Pathfinding": 8
+  "5.4 Machine Learning": 9
+  "8.3 Distribution": 9
+  "8.4 Analytics Integration": 9
+
+# Dependency validation rules
+DEPENDENCY_RULES:
+  # Hard blocking dependencies
+  BLOCKING_DEPENDENCIES:
+    - rule: "No UI features before core logic exists"
+      constraint: "taxonomy:2.* requires taxonomy:1.1,1.2,1.3,1.4"
+      error_message: "Core Logic Systems (Epic 1.1) must be complete before UI features"
+      
+    - rule: "No visual effects before basic UI exists" 
+      constraint: "taxonomy:3.* requires taxonomy:2.1,2.2"
+      error_message: "Basic UI and Input systems must exist before visual effects"
+      
+    - rule: "No advanced features before MVP foundation"
+      constraint: "priority:6+ requires priority:0-3 complete"
+      error_message: "Foundation systems (Priority 0-3) must be complete before advanced features"
+      
+    - rule: "No polish features in MVP mode"
+      constraint: "MVP_MODE blocks priority:6+"
+      error_message: "MVP mode prevents polish features - complete foundation first"
+  
+  # Soft warning dependencies  
+  WARNING_DEPENDENCIES:
+    - rule: "Testing should accompany core features"
+      constraint: "taxonomy:1.* recommended with taxonomy:7.1,7.2"
+      warning_message: "Consider implementing unit testing alongside core logic"
+      
+    - rule: "Performance optimization should follow functionality"
+      constraint: "taxonomy:6.3,6.4 recommended after core features complete"
+      warning_message: "Optimize performance after core functionality is stable"
+
+# ============================================
+# WORKFLOW STATUS
+# ============================================
+
+# Track which stages are complete
+STRUCTURE_COMPLETE: true
+GDD_COMPLETE: true
+TDS_COMPLETE: true
+ROADMAP_COMPLETE: true
+EPICS_DETAILED_COMPLETE: false
+CURRENT_EPIC_COMPLETE: false
+CURRENT_FEATURE_COMPLETE: false
+
+# Development progress tracking
+FOUNDATION_PROGRESS:
+  core_logic_complete: true          # Epic 1.1 complete (NumberGenerator, etc.)
+  debug_systems_complete: true       # Debug infrastructure and statistical validation
+  basic_testing_complete: true       # Unit testing framework
+  event_systems_complete: true       # Event-driven architecture
+  state_management_complete: false   # Game state management (Epic 1.1.3)
+  
+MVP_FOUNDATION_COMPLETE: false        # All foundation systems complete
+
+# ============================================
+# INSTRUCTIONS FOR USE
+# ============================================
+
+# 1. Copy this template to your project directory
+# 2. Replace all placeholder values in [BRACKETS]
+# 3. Paste your game idea in the GAME_IDEA section using markdown
+# 4. Set COMPLEXITY_LEVEL to desired level: simple, intermediate, or detailed
+# 5. When executing Linear issues, reference this file:
+#    "Load parameters from project-parameters.yaml"
+# 6. Parameters will be automatically substituted in templates
+# 7. Complexity scaling will automatically adjust scope and detail levels
+# 8. Update CURRENT_* parameters as you progress through epics/features
+
+# COMPLEXITY LEVEL GUIDE:
+# - simple: Quick prototypes, learning projects, minimal viable games
+# - intermediate: Standard indie games, balanced feature sets, commercial viability
+# - detailed: Comprehensive games, advanced features, professional polish
+
+# FORMATTING TIPS FOR GAME_IDEA:
+# - Use ## for main sections, ### for subsections
+# - Use - for bullet lists, 1. for numbered lists
+# - Use **text** for bold, *text* for italic
+# - Use ``` for code blocks if needed
+# - Keep each line under 100 characters for readability
+# - Use blank lines between sections for clarity
+
+# ============================================
+# PARAMETER VALIDATION CHECKSUMS
+# ============================================
+# These help commands validate parameter consistency
+
+VALIDATION_RULES:
+  COMPLEXITY_PHASE_MAPPING:
+    simple: 1
+    intermediate: 3  
+    detailed: 4
+  
+  COMPLEXITY_TDS_SECTIONS:
+    simple: "0-3"
+    intermediate: "0-5"
+    detailed: "0-7"
+    
+  COMPLEXITY_EPIC_RANGES:
+    simple: "2-3"
+    intermediate: "3-5"
+    detailed: "5-8"
+
+# Configuration validation summary  
+CONFIG_SUMMARY: |
+  Current Configuration:
+  - Complexity: simple
+  - Phases: 1 (Technical MVP only)
+  - TDS Sections: 4 (0-3)
+  - Target: Learning project / Concept validation
+  
+  ⚠️  This configuration is validated by workflow commands.
+  ⚠️  Mismatches will cause generation to fail with helpful error messages.
+  
+  To change complexity:
+  1. Update COMPLEXITY_LEVEL
+  2. Update PHASE_COUNT to match
+  3. Update PHASES array to match
+  4. Commands will validate consistency
